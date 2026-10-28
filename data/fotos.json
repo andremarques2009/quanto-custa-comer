@@ -1,0 +1,122 @@
+{
+  "fonte": "Wikimedia Commons",
+  "fotos": {
+    "arroz-agulhinha": {
+      "arquivo": "img/arroz-agulhinha.jpg",
+      "titulo_commons": "File:WhiteRice.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:WhiteRice.jpg",
+      "autor": "Sanjay Acharya",
+      "licenca": "CC BY-SA 3.0",
+      "link_licenca": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "descricao": "Grãos de arroz branco cru, tipo agulhinha (grão longo)."
+    },
+    "feijao-carioca": {
+      "arquivo": "img/feijao-carioca.jpg",
+      "titulo_commons": "File:Feijão Paulista.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Feij%C3%A3o_Paulista.jpg",
+      "autor": "Agent010",
+      "licenca": "CC BY-SA 4.0",
+      "link_licenca": "https://creativecommons.org/licenses/by-sa/4.0",
+      "descricao": "Feijão-carioca cru (feijão paulista), grãos bege com listras marrons."
+    },
+    "carne-bovina-de-primeira": {
+      "arquivo": "img/carne-bovina-de-primeira.jpg",
+      "titulo_commons": "File:Raw beef steak, 2011.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Raw_beef_steak,_2011.jpg",
+      "autor": "Jellaluna",
+      "licenca": "CC BY 2.0",
+      "link_licenca": "https://creativecommons.org/licenses/by/2.0",
+      "descricao": "Bife cru de carne bovina sobre tábua de corte."
+    },
+    "leite-integral": {
+      "arquivo": "img/leite-integral.jpg",
+      "titulo_commons": "File:Glass of Milk (33657535532).jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Glass_of_Milk_(33657535532).jpg",
+      "autor": "NIAID",
+      "licenca": "CC BY 2.0",
+      "link_licenca": "https://creativecommons.org/licenses/by/2.0",
+      "descricao": "Copo de vidro com leite."
+    },
+    "farinha-de-trigo": {
+      "arquivo": "img/farinha-de-trigo.jpg",
+      "titulo_commons": "File:All-Purpose Flour (4107895947).jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:All-Purpose_Flour_(4107895947).jpg",
+      "autor": "Veganbaking.net from USA",
+      "licenca": "CC BY-SA 2.0",
+      "link_licenca": "https://creativecommons.org/licenses/by-sa/2.0",
+      "descricao": "Farinha de trigo em uma tigela de vidro."
+    },
+    "batata": {
+      "arquivo": "img/batata.jpg",
+      "titulo_commons": "File:Wicker basket of potatoes.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Wicker_basket_of_potatoes.jpg",
+      "autor": "Dezidor",
+      "licenca": "CC BY 3.0",
+      "link_licenca": "https://creativecommons.org/licenses/by/3.0",
+      "descricao": "Batatas cruas em um cesto de vime."
+    },
+    "tomate": {
+      "arquivo": "img/tomate.jpg",
+      "titulo_commons": "File:Tomato Reds.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Tomato_Reds.jpg",
+      "autor": "liz west from Boxborough, MA, USA",
+      "licenca": "CC BY 2.0",
+      "link_licenca": "https://creativecommons.org/licenses/by/2.0",
+      "descricao": "Tomates vermelhos maduros."
+    },
+    "pao-frances": {
+      "arquivo": "img/pao-frances.jpg",
+      "titulo_commons": "File:Pao frances.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Pao_frances.jpg",
+      "autor": "Roosewelt Pinheiro/ABr",
+      "licenca": "CC BY 3.0 br",
+      "link_licenca": "https://creativecommons.org/licenses/by/3.0/br/deed.en",
+      "descricao": "Pães franceses em uma padaria do Distrito Federal."
+    },
+    "cafe-em-po": {
+      "arquivo": "img/cafe-em-po.jpg",
+      "titulo_commons": "File:Café molido.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_molido.jpg",
+      "autor": "-Abe",
+      "licenca": "CC BY-SA 4.0",
+      "link_licenca": "https://creativecommons.org/licenses/by-sa/4.0",
+      "descricao": "Café torrado e moído (café em pó) sobre um prato branco."
+    },
+    "banana": {
+      "arquivo": "img/banana.jpg",
+      "titulo_commons": "File:Banana Prata.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Banana_Prata.jpg",
+      "autor": "Gouvêa Martins",
+      "licenca": "CC0",
+      "link_licenca": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "descricao": "Pencas de banana-prata em uma banca de feira livre em Jacobina (BA)."
+    },
+    "acucar-refinado": {
+      "arquivo": "img/acucar-refinado.jpg",
+      "titulo_commons": "File:Bowl of white sugar without background.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Bowl_of_white_sugar_without_background.jpg",
+      "autor": "Douglas P Perkins",
+      "licenca": "CC BY 3.0",
+      "link_licenca": "https://creativecommons.org/licenses/by/3.0",
+      "descricao": "Tigela com açúcar branco."
+    },
+    "oleo-de-soja": {
+      "arquivo": "img/oleo-de-soja.jpg",
+      "titulo_commons": "File:Soybean Oil (10059657806).jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:Soybean_Oil_(10059657806).jpg",
+      "autor": "United Soybean Board",
+      "licenca": "CC BY 2.0",
+      "link_licenca": "https://creativecommons.org/licenses/by/2.0",
+      "descricao": "Óleo de soja em garrafas de vidro transparentes, sem rótulo."
+    },
+    "manteiga": {
+      "arquivo": "img/manteiga.jpg",
+      "titulo_commons": "File:2023 Masło w maselniczce.jpg",
+      "pagina_commons": "https://commons.wikimedia.org/wiki/File:2023_Mas%C5%82o_w_maselniczce.jpg",
+      "autor": "Jacek Halicki",
+      "licenca": "CC BY-SA 4.0",
+      "link_licenca": "https://creativecommons.org/licenses/by-sa/4.0",
+      "descricao": "Tablete de manteiga em uma manteigueira branca."
+    }
+  }
+}

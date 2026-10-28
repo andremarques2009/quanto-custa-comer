@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quanto custa comer?</title>
+  <!-- ícone vazio: evita que o navegador procure um favicon.ico que não existe -->
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA DO APP: nome e abas de navegação -->
+  <header class="barra">
+    <div class="barra-conteudo">
+      <a class="marca" href="#/alimentos">Quanto custa comer?</a>
+      <nav class="abas" aria-label="Navegação principal">
+        <a href="#/alimentos" data-aba="alimentos">Alimentos</a>
+        <a href="#/cesta" data-aba="cesta">Cesta × salário</a>
+        <a href="#/fontes" data-aba="fontes">Fontes</a>
+        <a href="#/sobre" data-aba="sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- ===== TELA: GRADE DE ALIMENTOS (tela inicial) ===== -->
+    <section class="tela" id="tela-alimentos">
+      <p class="selo-fonte">Números desta tela: <strong>IPCA / IBGE</strong></p>
+      <h1>Como o preço de cada alimento mudou?</h1>
+      <p class="intro">
+        <strong>Inflação</strong> é o aumento geral dos preços ao longo do tempo: com o mesmo dinheiro, compra-se menos.
+        O <strong>IPCA</strong> é o índice oficial de inflação do Brasil, calculado pelo IBGE; ele mede quanto os preços
+        subiram ou caíram para as famílias.
+      </p>
+      <p class="intro">Escolha um alimento da cesta básica para ver como o preço dele mudou em cada região do Brasil.</p>
+
+      <div class="barra-ferramentas">
+        <label for="ordem-alimentos">Ordenar</label>
+        <select id="ordem-alimentos">
+          <option value="nome">Ordem alfabética</option>
+          <option value="maior">Maior alta em 12 meses</option>
+          <option value="menor">Maior queda em 12 meses</option>
+        </select>
+      </div>
+
+      <p class="legenda-grade" id="legenda-grade"></p>
+      <div class="grade-alimentos" id="grade-alimentos"></div>
+      <p class="fonte" id="fonte-grade"></p>
+    </section>
+
+    <!-- ===== TELA: UM ALIMENTO ===== -->
+    <section class="tela" id="tela-alimento">
+      <a class="voltar" href="#/alimentos">← Todos os alimentos</a>
+      <p class="selo-fonte">Números desta tela: <strong>IPCA / IBGE</strong></p>
+      <div class="alimento-topo">
+        <div class="foto foto-grande" id="alimento-foto"></div>
+        <div>
+          <h1 id="alimento-nome"></h1>
+          <p class="aviso-item" id="alimento-aviso" hidden></p>
+          <p id="alimento-descricao"></p>
+          <p class="credito" id="alimento-credito"></p>
+        </div>
+      </div>
+
+      <!-- No computador: Tipo e Região numa linha, Medida e Período na outra.
+           No celular: um grupo embaixo do outro. -->
+      <div class="controles">
+        <div class="controles-linha">
+          <div id="grupo-item">
+            <span class="controle-titulo">Tipo</span>
+            <div class="pilulas" id="escolha-item"></div>
+          </div>
+          <div>
+            <span class="controle-titulo">Região</span>
+            <div class="pilulas" id="escolha-regiao"></div>
+          </div>
+        </div>
+        <div class="controles-linha">
+          <div>
+            <span class="controle-titulo">Medida</span>
+            <div class="pilulas" id="escolha-medida"></div>
+          </div>
+          <div>
+            <span class="controle-titulo">Período</span>
+            <div class="pilulas" id="escolha-periodo"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="explica-medida" id="explica-medida"></p>
+      <p class="explica-medida" id="explica-periodo"></p>
+      <div class="grafico"><canvas id="grafico-alimento" aria-label="Gráfico da inflação do alimento por local"></canvas></div>
+      <p class="fonte" id="fonte-alimento"></p>
+
+      <h2 id="titulo-ranking"></h2>
+      <ol class="ranking" id="ranking-alimento"></ol>
+      <div class="notas" id="notas-alimento"></div>
+    </section>
+
+    <!-- ===== TELA: CESTA × SALÁRIO (São Paulo) ===== -->
+    <section class="tela" id="tela-cesta">
+      <p class="selo-fonte">Números desta tela: <strong>DIEESE / Conab</strong> (salário mínimo de 2026: decreto federal)</p>
+      <h1>Cesta básica × salário mínimo em São Paulo</h1>
+
+      <article class="bloco">
+        <h2>O custo da cesta básica</h2>
+        <p id="texto-cesta"></p>
+        <div class="grafico"><canvas id="grafico-cesta" aria-label="Gráfico do valor da cesta básica em São Paulo"></canvas></div>
+        <p class="fonte" id="fonte-cesta"></p>
+      </article>
+
+      <article class="bloco">
+        <h2>Quanto do salário vai para a cesta</h2>
+        <p id="texto-salario-intro"></p>
+        <div class="lado-a-lado">
+          <div>
+            <div class="grafico"><canvas id="grafico-salario" aria-label="Gráfico da porcentagem do salário mínimo líquido gasta com a cesta"></canvas></div>
+            <p class="dica">Toque ou clique em um ponto do gráfico para ver o mês no cartão.</p>
+          </div>
+          <aside class="cartao" aria-live="polite">
+            <label for="seletor-mes-horas">Mês</label>
+            <select id="seletor-mes-horas"></select>
+            <p class="cartao-rotulo">Horas de trabalho para comprar a cesta</p>
+            <p class="cartao-numero" id="cartao-horas"></p>
+            <ul class="cartao-detalhes" id="cartao-detalhes"></ul>
+          </aside>
+        </div>
+        <p id="texto-reajuste"></p>
+        <p class="fonte" id="fonte-salario"></p>
+      </article>
+
+      <article class="bloco">
+        <h2>Quais alimentos mais pesaram</h2>
+        <p id="texto-alimentos-sp"></p>
+        <label for="seletor-mes-alimentos">Mês de referência</label>
+        <select id="seletor-mes-alimentos"></select>
+        <div class="grafico grafico-barras"><canvas id="grafico-alimentos-sp" aria-label="Gráfico da variação de preço de cada alimento em 12 meses"></canvas></div>
+        <div id="notas-alimentos-sp" class="notas"></div>
+        <p class="fonte" id="fonte-alimentos-sp"></p>
+      </article>
+    </section>
+
+    <!-- ===== TELA: FONTES ===== -->
+    <section class="tela" id="tela-fontes">
+      <h1>Fontes</h1>
+      <p>Todos os números deste app foram copiados de publicações oficiais. Nenhum número foi calculado, estimado ou arredondado.</p>
+
+      <h2>Inflação de cada alimento (IBGE)</h2>
+      <div id="fontes-ipca"></div>
+
+      <h3>Por que esses itens do IPCA (carne e banana)</h3>
+      <ul id="fontes-metodologia" class="lista-fontes"></ul>
+
+      <h2>Cesta básica de São Paulo (DIEESE/Conab)</h2>
+      <p id="texto-fontes-dieese"></p>
+      <ol id="lista-fontes" class="lista-fontes"></ol>
+
+      <h2>Salário mínimo de 2026</h2>
+      <ul id="lista-fontes-extra" class="lista-fontes"></ul>
+
+      <h2>Fotos</h2>
+      <ul id="lista-fotos" class="lista-fontes"></ul>
+    </section>
+
+    <!-- ===== TELA: SOBRE ===== -->
+    <section class="tela" id="tela-sobre">
+      <h1>Sobre o projeto</h1>
+      <p class="intro">
+        Projeto final do itinerário Lógica e Negócios do Colégio Rio Branco (São Paulo, 2026), com o tema
+        "Inflação e o aumento do custo de vida no Brasil para pessoas de baixa renda", com recorte nas classes C e D.
+      </p>
+      <p>Integrantes: <strong>Leonardo Labate (nº 16)</strong> e <strong>André Luiz (nº 2)</strong>.</p>
+      <p>
+        O app mostra como o preço dos alimentos da cesta básica mudou nos últimos anos e quanto do salário mínimo
+        é preciso para comprar essa cesta. As fontes de cada número estão na aba <a href="#/fontes">Fontes</a>.
+      </p>
+
+      <h2>DIEESE e IBGE: qual a diferença?</h2>
+      <p>
+        O DIEESE pesquisa todo mês o preço, em reais, de cada alimento da cesta básica e calcula quanto a cesta inteira
+        custa em cada capital; esses números estão na aba "Cesta × salário".
+        O IBGE, no IPCA, mede quanto mudaram os preços de centenas de produtos e serviços que as famílias compram,
+        em algumas regiões metropolitanas e municípios; esses números estão na aba "Alimentos".
+        As duas pesquisas visitam lojas diferentes, usam métodos próprios e às vezes medem produtos um pouco
+        diferentes (o IPCA, por exemplo, mede o leite longa vida e não acompanha o coxão duro, que o DIEESE pesquisa).
+        Por isso, a variação de preço de um mesmo alimento pode não ser igual nas duas pesquisas, e as duas estão certas
+        dentro do que cada uma mede.
+      </p>
+
+      <h2>Por que o gráfico dos alimentos começa onde começa?</h2>
+      <p id="sobre-periodo"></p>
+    </section>
+
+  </main>
+
+  <!-- Biblioteca de gráficos (cópia local, funciona sem internet) -->
+  <script src="vendor/chart.umd.min.js"></script>
+  <!-- Dados: gerados a partir dos arquivos .json da pasta data/ (veja o README) -->
+  <script src="data/cesta-sao-paulo.js"></script>
+  <script src="data/ipca-alimentos.js"></script>
+  <script src="data/fotos.js" onerror="window.DADOS_FOTOS = null"></script>
+  <!-- Código do app, um arquivo para cada parte -->
+  <script src="js/util.js"></script>
+  <script src="js/alimentos.js"></script>
+  <script src="js/cesta.js"></script>
+  <script src="js/fontes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

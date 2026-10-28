@@ -1,0 +1,416 @@
+/* ===== Cores e medidas usadas no app inteiro ===== */
+:root {
+  --fundo: #f6f5f0;
+  --fundo-cartao: #ffffff;
+  --texto: #1d232a;
+  --texto-suave: #545d68;
+  --borda: #dcdcd4;
+  --destaque: #b4451f;        /* cor de destaque (terracota) */
+  --destaque-escuro: #8f3518;
+  --destaque-claro: #f6e3da;
+  --neutro: #6b7480;          /* usado para quedas de preço */
+  --neutro-claro: #e8eaed;
+  --altura-barra: 60px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  /* fonte do próprio sistema (não precisa baixar nada) */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+a { color: var(--destaque); }
+
+/* Largura máxima do conteúdo, com margem de 16px nas laterais no celular */
+.conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 { font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.15; margin: 8px 0 16px; }
+h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin: 32px 0 12px; color: var(--destaque); }
+h3 { margin: 0; }
+.intro { font-size: 1.05rem; max-width: 760px; }
+
+/* ===== Barra do app (topo) ===== */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--fundo-cartao);
+  border-bottom: 1px solid var(--borda);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+.barra-conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: var(--altura-barra);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.marca {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--destaque);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.abas { display: flex; gap: 4px; }
+.abas a {
+  text-decoration: none;
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+.abas a:hover { background: var(--neutro-claro); }
+.abas a.ativa { background: var(--destaque); color: #ffffff; }
+
+/* Aviso no topo de cada tela dizendo de qual pesquisa vêm os números */
+.selo-fonte {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin: 0 0 4px;
+}
+.selo-fonte strong { color: var(--texto); }
+
+/* ===== Grade de alimentos ===== */
+.barra-ferramentas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 16px;
+}
+.barra-ferramentas label { margin: 0; }
+.barra-ferramentas select { margin: 0; }
+
+.legenda-grade {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 12px;
+}
+.grade-alimentos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* os cartões de uma mesma linha esticam até a altura do mais alto dela
+     (sem forçar todas as linhas a terem a altura do maior cartão da grade) */
+  gap: 16px;
+}
+.card-alimento {
+  display: flex;
+  flex-direction: column;
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--texto);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.card-alimento:hover, .card-alimento:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+  outline: none;
+}
+.card-alimento:active { transform: scale(0.98); }
+.card-corpo {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.card-corpo h3 { font-size: 1.25rem; line-height: 1.25; }
+.tipo { font-size: 0.9rem; color: var(--texto-suave); }
+
+/* Foto: caixa com proporção 4:3, a imagem preenche sem distorcer */
+.foto {
+  aspect-ratio: 4 / 3;
+  background: var(--neutro-claro);
+  overflow: hidden;
+}
+.foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.foto-vazia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--texto-suave);
+  font-weight: 700;
+}
+
+/* Selo com a variação (seta + sinal, para não depender só da cor) */
+.selo {
+  align-self: flex-start;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--neutro-claro);
+  color: var(--texto-suave);
+}
+.selo-alta { background: var(--destaque-claro); color: var(--destaque-escuro); }
+.selo-queda { background: var(--neutro-claro); color: #3f4650; }
+
+.botao {
+  margin-top: auto;             /* fica sempre no rodapé do cartão */
+  padding-top: 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--destaque);
+}
+
+/* ===== Tela de um alimento ===== */
+.voltar {
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 0;
+}
+.alimento-topo {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+.foto-grande { border-radius: 14px; }
+
+/* Aviso sobre a escolha do item do IPCA (ex.: carne), em destaque abaixo do título */
+.aviso-item {
+  font-size: 0.95rem;
+  background: var(--destaque-claro);
+  border-left: 4px solid var(--destaque);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin: 0 0 12px;
+}
+/* Botão "ler mais" do aviso: só aparece no celular (no computador o aviso fica todo aberto) */
+.ler-mais {
+  display: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--destaque-escuro);
+  background: none;
+  border: none;
+  padding: 4px 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.alimento-topo h1 { margin-top: 0; }
+.credito { font-size: 0.8rem; color: var(--texto-suave); }
+
+.controles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+/* no computador, dois grupos de botões lado a lado em cada linha */
+.controles-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+}
+.controle-titulo {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  margin-bottom: 4px;
+}
+.pilulas { display: flex; flex-wrap: wrap; gap: 8px; }
+.pilula {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  min-height: 40px;            /* fácil de tocar no celular */
+  border-radius: 999px;
+  border: 1.5px solid var(--borda);
+  background: var(--fundo-cartao);
+  color: var(--texto);
+  cursor: pointer;
+}
+.pilula:hover { border-color: var(--destaque); }
+.pilula.ativa { background: var(--destaque); border-color: var(--destaque); color: #ffffff; }
+
+.explica-medida { font-size: 0.95rem; color: var(--texto-suave); margin: 16px 0 0; }
+
+.ranking {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.ranking li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--borda);
+}
+.ranking li:first-child { border-top: none; }
+.ranking small { color: var(--texto-suave); }
+.ranking .alta { color: var(--destaque-escuro); }
+.ranking .queda { color: #3f4650; }
+.ranking .sem-dados { color: var(--texto-suave); font-size: 0.9rem; font-style: italic; }
+
+/* ===== Gráficos ===== */
+.grafico {
+  position: relative;
+  height: 460px;
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 12px;
+  margin: 12px 0 8px;
+}
+.grafico-barras { height: 600px; }
+
+.fonte, .dica {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin: 4px 0 0;
+}
+
+/* ===== Aba cesta × salário ===== */
+.bloco {
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 4px 20px 20px;
+  margin-bottom: 20px;
+}
+.bloco h2 { margin-top: 20px; }
+.bloco .grafico { border: none; padding: 0; }
+
+.lado-a-lado {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+  align-items: start;
+}
+.cartao {
+  background: var(--fundo-cartao);
+  border: 2px solid var(--destaque);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.cartao-rotulo { margin: 16px 0 0; font-size: 0.95rem; color: var(--texto-suave); }
+.cartao-numero {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--destaque);
+  margin: 4px 0 12px;
+}
+.cartao-detalhes { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; }
+.cartao-detalhes li { padding: 4px 0; border-top: 1px solid var(--borda); }
+
+/* ===== Seletores ===== */
+label { display: block; font-weight: 600; font-size: 0.95rem; }
+select {
+  font: inherit;
+  font-size: 1rem;
+  padding: 8px 10px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--fundo-cartao);
+  color: var(--texto);
+  width: 100%;
+  max-width: 280px;
+  margin-top: 4px;
+}
+
+/* ===== Notas e listas ===== */
+.notas p {
+  font-size: 0.95rem;
+  background: var(--destaque-claro);
+  border-left: 4px solid var(--destaque);
+  border-radius: 0 8px 8px 0;
+  padding: 8px 12px;
+  margin: 10px 0;
+}
+.lista-fontes { padding-left: 24px; font-size: 0.95rem; }
+.lista-fontes li { margin: 6px 0; overflow-wrap: anywhere; }
+
+/* ===== Computador: tela do alimento mais compacta =====
+   Para o gráfico aparecer sem rolar numa tela de 1280×800.
+   (No celular nada disto vale: veja o bloco "Celular" abaixo.) */
+@media (min-width: 761px) {
+  .alimento-topo { grid-template-columns: 200px 1fr; gap: 20px; margin: 4px 0 12px; align-items: start; }
+  .alimento-topo h1 { margin-bottom: 8px; }
+  .alimento-topo p { margin: 0 0 6px; }
+  .alimento-topo .aviso-item { padding: 8px 14px; margin-bottom: 10px; }
+  .controles { padding: 10px 16px; gap: 8px; }
+  .controles-linha { gap: 8px 32px; }
+  .controle-titulo { margin-bottom: 2px; }
+  .pilula { padding: 5px 14px; min-height: 36px; }
+  .explica-medida { margin-top: 8px; }
+  .explica-medida + .explica-medida { margin-top: 0; }
+}
+
+/* ===== Celular ===== */
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  /* As abas viram uma barra fixa embaixo da tela, como em um aplicativo */
+  .abas {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 10;
+    background: var(--fundo-cartao);
+    border-top: 1px solid var(--borda);
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    justify-content: space-around;
+  }
+  .abas a { font-size: 0.85rem; padding: 8px 10px; text-align: center; }
+  .barra-conteudo { height: 52px; }
+  .conteudo { padding-bottom: 96px; } /* espaço para a barra de baixo */
+
+  .grade-alimentos { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card-corpo { padding: 10px; }
+  .card-corpo h3 { font-size: 1.05rem; }
+  .selo { font-size: 0.85rem; padding: 2px 8px; }
+  .botao { font-size: 0.95rem; }
+
+  .alimento-topo { grid-template-columns: 1fr; gap: 12px; }
+  /* foto baixinha no celular, para o seletor e o gráfico aparecerem mais cedo */
+  .foto-grande { aspect-ratio: auto; height: 160px; }
+  /* aviso recolhido: só a primeira frase, o resto aparece ao tocar em "ler mais" */
+  .aviso-item:not(.aberto) .aviso-resto { display: none; }
+  .ler-mais { display: inline; }
+  .controles-linha { flex-direction: column; gap: 12px; }
+  .lado-a-lado { grid-template-columns: 1fr; }
+  .grafico { height: 340px; padding: 8px; }
+  .grafico-barras { height: 480px; }
+  .bloco { padding: 4px 14px 16px; }
+  select { max-width: none; }
+  .barra-ferramentas select { max-width: 220px; }
+}

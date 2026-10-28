@@ -1,0 +1,25 @@
+# PDFs do DIEESE baixados para conferência (os links oficiais estão na aba Fontes)
+fontes/
+# Lista das cópias locais desses PDFs, gerada por ferramentas/gerar_js.py
+data/copias-locais.js
+
+# Instruções de trabalho do projeto (não fazem parte do site e citam o
+# nome de uma pessoa de fora da escola)
+CLAUDE.md
+AGENTS.md
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+__pycache__/
+*.pyc
+.venv/
+venv/
