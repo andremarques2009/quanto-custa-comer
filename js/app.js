@@ -6,6 +6,7 @@
     #/alimentos         -> grade de alimentos (tela inicial)
     #/alimento/batata   -> tela da batata
     #/cesta             -> cesta × salário
+    #/causas            -> por que o preço muda
     #/fontes            -> fontes
     #/sobre             -> sobre o projeto
   Isso funciona até abrindo o arquivo com duplo clique, sem servidor.
@@ -30,6 +31,9 @@ function rotear() {
   } else if (partes[0] === 'cesta') {
     mostrarTela('tela-cesta', 'cesta');
     iniciarCesta();
+  } else if (partes[0] === 'causas') {
+    mostrarTela('tela-causas', 'causas');
+    iniciarCausas();
   } else if (partes[0] === 'fontes') {
     mostrarTela('tela-fontes', 'fontes');
     iniciarFontes();

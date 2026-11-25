@@ -17,6 +17,7 @@
       <nav class="abas" aria-label="Navegação principal">
         <a href="#/alimentos" data-aba="alimentos">Alimentos</a>
         <a href="#/cesta" data-aba="cesta">Cesta × salário</a>
+        <a href="#/causas" data-aba="causas">Causas</a>
         <a href="#/fontes" data-aba="fontes">Fontes</a>
         <a href="#/sobre" data-aba="sobre">Sobre</a>
       </nav>
@@ -142,10 +143,177 @@
       </article>
     </section>
 
+    <!-- ===== TELA: CAUSAS (por que o preço muda) ===== -->
+    <section class="tela" id="tela-causas">
+      <p class="selo-fonte">Números desta tela: <strong>Ipea, IBGE, Banco Central, Banco Mundial, USDA, Conab, MDIC e EPE</strong> (fonte e mês embaixo de cada gráfico)</p>
+      <h1>Por que o preço da comida muda?</h1>
+      <p class="intro">
+        As abas anteriores mostram <em>quanto</em> o preço mudou. Esta mostra <em>por quê</em>: quatro mecanismos econômicos
+        pouco conhecidos, explicados em instituições oficiais de pesquisa.
+      </p>
+
+      <div class="legenda-registros">
+        <p><span class="etiqueta etiqueta-sim">Simulação</span> Caixa tracejada, sem números: um modelo simplificado para entender a lógica. <strong>Não é previsão</strong> nem mede o tamanho de nenhum efeito.</p>
+        <p><span class="etiqueta etiqueta-real">Dado real</span> Gráficos e números copiados de publicações oficiais, com fonte e período.</p>
+        <p><span class="etiqueta etiqueta-calc">Cálculo da equipe</span> Conta simples feita pelos alunos a partir de dados oficiais, com a fórmula ao lado para qualquer pessoa conferir.</p>
+      </div>
+
+      <nav class="indice-causas" aria-label="Partes desta aba">
+        <button type="button" class="pilula" data-ir="causa-ancora">1. Quem sente mais</button>
+        <button type="button" class="pilula" data-ir="causa-cafe">2. Café, dólar e exportação</button>
+        <button type="button" class="pilula" data-ir="causa-ciclos">3. Arroz × boi</button>
+        <button type="button" class="pilula" data-ir="causa-biodiesel">4. Biodiesel e óleo</button>
+        <button type="button" class="pilula" data-ir="causa-fontes">Fontes</button>
+      </nav>
+
+      <!-- 1. ÂNCORA -->
+      <article class="bloco" id="causa-ancora">
+        <h2>1. A mesma alta pesa mais para quem ganha menos</h2>
+        <p>Quanto menor a renda, maior a parte do dinheiro que vai para a comida. Por isso qualquer mudança no preço dos alimentos mexe mais no orçamento das famílias de renda mais baixa. Os economistas chamam esse padrão de Lei de Engel.</p>
+        <p id="ancora-faixas"></p>
+        <p class="etiqueta etiqueta-real">Dado real</p>
+        <div class="orcamentos" id="ancora-orcamentos"></div>
+        <p class="fonte" id="ancora-fonte-pesos"></p>
+        <h3 class="subtitulo">Nos meses em que a comida subiu ou caiu</h3>
+        <p>Escolha um mês para comparar a inflação das duas faixas:</p>
+        <div class="pilulas" id="ancora-meses"></div>
+        <div class="painel-mes" id="ancora-mes" aria-live="polite"></div>
+        <h3 class="subtitulo">Mas atenção</h3>
+        <ul class="atencao" id="ancora-atencao"></ul>
+      </article>
+
+      <!-- 2. CAFÉ -->
+      <article class="bloco bloco-principal" id="causa-cafe">
+        <h2>2. Café: o Brasil produz muito, mas o preço segue o mundo</h2>
+        <p id="cafe-escala"></p>
+        <p><strong>Câmbio</strong> é o preço do dólar em reais. Quando o dólar sobe, cada dólar recebido por uma venda ao exterior vale mais reais.</p>
+
+        <h3 class="subtitulo">Entenda: dois compradores para a mesma saca</h3>
+        <div class="simulacao">
+          <p class="etiqueta etiqueta-sim">Simulação · modelo simplificado, não é previsão</p>
+          <p>O produtor pode vender a saca para uma torrefação no Brasil ou para um comprador no exterior, e vende para quem pagar mais. Mude o preço lá fora e o dólar e veja o que acontece.</p>
+          <div class="sim-controles">
+            <div><span class="controle-titulo">Preço do café lá fora</span><div class="pilulas" id="sim-cafe-fora"></div></div>
+            <div><span class="controle-titulo">Dólar</span><div class="pilulas" id="sim-cafe-dolar"></div></div>
+          </div>
+          <div class="cadeia" id="sim-cafe-cadeia"></div>
+          <p class="sim-frase" id="sim-cafe-frase" aria-live="polite"></p>
+          <p class="fonte">O modelo ignora frete, qualidade, estoques e clima. O mecanismo é descrito pelo Ipea e pelo Banco Central (fontes abaixo).</p>
+        </div>
+
+        <h3 class="subtitulo">Quanto do café brasileiro vai para fora</h3>
+        <p class="etiqueta etiqueta-calc">Cálculo da equipe</p>
+        <div class="sacas" id="cafe-exportado"></div>
+        <details class="conta"><summary>Ver a conta</summary><p id="cafe-exportado-conta"></p></details>
+
+        <h3 class="subtitulo">O que aconteceu de verdade</h3>
+        <p class="etiqueta etiqueta-real">Dado real</p>
+        <div class="tres-graficos">
+          <figure><figcaption>Preço internacional do café arábica (US$ por kg)</figcaption><div class="grafico grafico-pequeno"><canvas id="graf-cafe-arabica" aria-label="Gráfico do preço internacional do café arábica"></canvas></div></figure>
+          <figure><figcaption>Dólar (reais por dólar, média do mês)</figcaption><div class="grafico grafico-pequeno"><canvas id="graf-cafe-dolar" aria-label="Gráfico do dólar"></canvas></div></figure>
+          <figure><figcaption>Preço do café moído no Brasil (IPCA, variação em 12 meses)</figcaption><div class="grafico grafico-pequeno"><canvas id="graf-cafe-ipca" aria-label="Gráfico da inflação do café moído em 12 meses"></canvas></div></figure>
+        </div>
+        <p class="fonte" id="cafe-fontes-graf"></p>
+        <div class="citacoes">
+          <p><strong>Ipea:</strong> com a alta internacional das proteínas animais e do café e a desvalorização do real, exportar ficou mais lucrativo e uma parte maior da produção foi para fora, o que pressionou os preços aqui (Carta de Conjuntura nº 66, 2025). Segundo o Ipea, a alta das carnes também veio do aumento das exportações, não da falta de produção.</p>
+          <p><strong>Banco Central:</strong> o outro sentido também acontece. A valorização do real e a queda das commodities ajudaram a desacelerar os preços da alimentação no domicílio em 2025 (Relatório de Política Monetária, dez/2025). O BC estima que o câmbio passa para os preços mais na comida em casa do que nos serviços (mar/2026).</p>
+        </div>
+
+        <h3 class="subtitulo">Mas atenção</h3>
+        <ul class="atencao">
+          <li><strong>Não foi só o dólar.</strong> Em 2024 houve quebra da safra de café no Vietnã, e no fim de 2025 os estoques estavam baixos e havia risco de seca (Ipea e Banco Central). Em 2026, a expectativa de uma boa safra no Brasil ajudou a derrubar o preço (Cepea e Conab). Nenhuma fonte separa quanto da alta veio do câmbio e quanto veio da oferta mundial.</li>
+          <li><strong>O supermercado demora.</strong> Em São Paulo, o preço do café em pó no varejo (DIEESE) chegou ao máximo meses depois do preço internacional e caiu menos (leitura da equipe). Esta pesquisa não encontrou estudo oficial que explique essa demora.</li>
+        </ul>
+
+        <div class="contraexemplo">
+          <h3>Contraexemplo: o feijão</h3>
+          <p id="feijao-texto"></p>
+          <p class="fonte" id="feijao-nota"></p>
+          <p><strong>Conclusão:</strong> o mecanismo é forte nos alimentos de que o Brasil exporta uma parte grande da produção, como café e carne, e fraco nos que ficam quase todos aqui.</p>
+        </div>
+      </article>
+
+      <!-- 3. CICLOS -->
+      <article class="bloco" id="causa-ciclos">
+        <h2>3. Arroz × boi: a mesma notícia, reações opostas</h2>
+        <p>Nos dois casos, o preço sobe. O produtor de arroz decide <strong>quanto plantar</strong>; o pecuarista decide <strong>o que fazer com a vaca</strong>. Por isso a oferta de arroz aumenta na safra seguinte, e a oferta de carne diminui primeiro.</p>
+
+        <div class="simulacao">
+          <p class="etiqueta etiqueta-sim">Simulação · modelo simplificado, não é previsão</p>
+          <div class="ciclo-controles">
+            <button type="button" class="pilula" id="ciclo-voltar">← Etapa anterior</button>
+            <span id="ciclo-etapa" class="ciclo-etapa"></span>
+            <button type="button" class="pilula ativa" id="ciclo-avancar">Próxima etapa →</button>
+          </div>
+          <p class="sim-frase" id="ciclo-frase" aria-live="polite"></p>
+          <div class="dois-ciclos">
+            <div><h3>Arroz: uma safra por vez</h3><ol class="passos" id="ciclo-arroz"></ol></div>
+            <div><h3>Boi: um ciclo de anos</h3><ol class="passos" id="ciclo-boi"></ol></div>
+          </div>
+          <p class="fonte">Mecanismos descritos pela Conab (arroz) e pelo Banco Central e pela Embrapa (boi). O modelo ignora clima, custos e crédito.</p>
+        </div>
+
+        <h3 class="subtitulo">O que aconteceu de verdade: arroz</h3>
+        <p class="etiqueta etiqueta-real">Dado real</p>
+        <p id="arroz-texto"></p>
+        <div class="lado-a-lado-igual">
+          <figure><figcaption>Área plantada de arroz (mil hectares)</figcaption><div class="grafico grafico-pequeno"><canvas id="graf-arroz-area" aria-label="Gráfico da área plantada de arroz por safra"></canvas></div><p class="fonte" id="arroz-fonte-area"></p></figure>
+          <figure><figcaption>Preço do arroz (IPCA, variação em 12 meses)</figcaption><div class="grafico grafico-pequeno"><canvas id="graf-arroz-ipca" aria-label="Gráfico da inflação do arroz em 12 meses"></canvas></div><p class="fonte" id="arroz-fonte-ipca"></p></figure>
+        </div>
+
+        <h3 class="subtitulo">O que aconteceu de verdade: boi</h3>
+        <p class="etiqueta etiqueta-calc">Cálculo da equipe com dados do IBGE</p>
+        <p id="boi-texto"></p>
+        <div class="grafico grafico-medio"><canvas id="graf-boi-femeas" aria-label="Gráfico da participação das fêmeas no abate de bovinos"></canvas></div>
+        <p class="fonte" id="boi-fonte"></p>
+        <details class="conta"><summary>Ver a conta</summary><p id="boi-conta"></p></details>
+
+        <h3 class="subtitulo">Mas atenção</h3>
+        <ul class="atencao">
+          <li><strong>A enchente não começou a alta do arroz.</strong> O preço já subia no fim de 2023, com pouca oferta no Brasil e chuvas na Ásia (Banco Central). A enchente de 2024 atingiu uma área pequena, porque a maior parte do arroz gaúcho já tinha sido colhida (Conab).</li>
+          <li><strong>O ciclo do arroz ainda não fechou.</strong> Para a safra 2026/27, a Conab estima uma área ainda menor, por clima, custos e preço. É estimativa, e a etapa "preço recuperou, área cresce" ainda não apareceu nos dados.</li>
+          <li><strong>A virada do boi ainda é preliminar.</strong> No 2º trimestre de 2026, o abate de fêmeas caiu 1,9% e o de vacas, 5,0%, sobre um ano antes (IBGE, dado preliminar): é o primeiro sinal de que os pecuaristas começaram a segurar fêmeas. A Conab escreve que a virada está "mais gradual" do que se esperava.</li>
+          <li><strong>Os ciclos se encontram com a exportação.</strong> Em 2025, o abate de bovinos foi recorde, e o IBGE atribui isso ao recorde da exportação de carne, o mesmo mecanismo do café.</li>
+        </ul>
+      </article>
+
+      <!-- 4. BIODIESEL -->
+      <article class="bloco" id="causa-biodiesel">
+        <h2>4. Biodiesel: uma decisão de energia que mudou o destino do óleo de soja</h2>
+        <p>O diesel vendido no Brasil é obrigado por lei a ter uma parte de <strong>biodiesel</strong>, combustível feito principalmente de óleo de soja. Essa parte é decidida pelo governo (Conselho Nacional de Política Energética, CNPE). Este é um caso complementar: o efeito sobre a <em>quantidade</em> de óleo está comprovado; o efeito sobre o <em>preço</em> no supermercado, não.</p>
+        <p class="etiqueta etiqueta-real">Dado real</p>
+        <h3 class="subtitulo">A mistura obrigatória ao longo do tempo</h3>
+        <ol class="linha-tempo" id="bio-linha"></ol>
+
+        <h3 class="subtitulo">Quanto do óleo de soja produzido vai para o biodiesel</h3>
+        <p class="etiqueta etiqueta-calc">Cálculo da equipe</p>
+        <div class="grafico grafico-pequeno"><canvas id="graf-bio-destino" aria-label="Gráfico da parte do óleo de soja usada no biodiesel"></canvas></div>
+        <details class="conta"><summary>Ver a conta</summary><p id="bio-conta"></p></details>
+
+        <h3 class="subtitulo">E o preço do óleo?</h3>
+        <table class="tabela-simples">
+          <thead><tr><th>Mês</th><th>Mistura</th><th>Preço do óleo em 12 meses</th></tr></thead>
+          <tbody id="bio-ipca"></tbody>
+        </table>
+        <p class="fonte" id="bio-fonte-ipca"></p>
+
+        <h3 class="subtitulo">Mas atenção</h3>
+        <ul class="atencao" id="bio-atencao"></ul>
+        <p class="nota-curta">A cana também pode virar açúcar ou etanol, mas os dados de 2023 a 2026 não mostram o etanol encarecendo o açúcar. Por isso esse caso ficou fora desta aba.</p>
+      </article>
+
+      <!-- FONTES -->
+      <article class="bloco" id="causa-fontes">
+        <h2>Fontes desta aba</h2>
+        <p>Cada afirmação desta aba foi conferida em documentos oficiais. Todos os números vêm do arquivo de dados do app; os marcados como "Cálculo da equipe" têm a conta ao lado.</p>
+        <ul class="lista-fontes" id="causas-fontes"></ul>
+      </article>
+    </section>
+
     <!-- ===== TELA: FONTES ===== -->
     <section class="tela" id="tela-fontes">
       <h1>Fontes</h1>
-      <p>Todos os números deste app foram copiados de publicações oficiais. Nenhum número foi calculado, estimado ou arredondado.</p>
+      <p>Nas abas Alimentos e Cesta × salário, todos os números foram copiados de publicações oficiais, sem nenhum cálculo, estimativa ou arredondamento. Na aba <a href="#/causas">Causas</a>, os poucos números calculados pelos alunos a partir de dados oficiais estão marcados como "Cálculo da equipe", com a conta ao lado; as fontes dessa aba estão no fim dela.</p>
 
       <h2>Inflação de cada alimento (IBGE)</h2>
       <div id="fontes-ipca"></div>
@@ -201,11 +369,13 @@
   <script src="data/cesta-sao-paulo.js"></script>
   <script src="data/ipca-alimentos.js"></script>
   <script src="data/fotos.js" onerror="window.DADOS_FOTOS = null"></script>
+  <script src="data/causas.js"></script>
   <!-- Código do app, um arquivo para cada parte -->
   <script src="js/util.js"></script>
   <script src="js/alimentos.js"></script>
   <script src="js/cesta.js"></script>
   <script src="js/fontes.js"></script>
+  <script src="js/causas.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

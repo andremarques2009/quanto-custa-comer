@@ -16,6 +16,7 @@ ARQUIVOS = {
     "data/cesta-sao-paulo.json": ("data/cesta-sao-paulo.js", "DADOS_CESTA"),
     "data/ipca-alimentos.json": ("data/ipca-alimentos.js", "DADOS_IPCA"),
     "data/fotos.json": ("data/fotos.js", "DADOS_FOTOS"),
+    "data/causas.json": ("data/causas.js", "DADOS_CAUSAS"),
 }
 
 for origem, (destino, variavel) in ARQUIVOS.items():
