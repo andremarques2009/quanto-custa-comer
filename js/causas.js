@@ -77,9 +77,9 @@
   function montarAncora() {
     const A = C.ancora;
     el('ancora-faixas').innerHTML =
-      'O Ipea calcula a inflação de seis faixas de renda com os mesmos preços do IPCA, mas com o peso que cada produto tem no orçamento de cada faixa. ' +
-      'A faixa de <strong>renda muito baixa</strong> é a das famílias com renda domiciliar abaixo de ' + reais(A.faixas.muito_baixa_limite_reais) +
-      ' por mês; a de <strong>renda alta</strong>, acima de ' + reais(A.faixas.alta_limite_reais) + ' (' + A.faixas.referencia + ').';
+      'O Ipea calcula a inflação de seis faixas de renda: os preços são os do IPCA, e o peso de cada produto muda conforme a faixa. ' +
+      '<strong>Renda muito baixa</strong>: renda domiciliar abaixo de ' + reais(A.faixas.muito_baixa_limite_reais) +
+      ' por mês; <strong>renda alta</strong>: acima de ' + reais(A.faixas.alta_limite_reais) + ' (' + A.faixas.referencia + ').';
 
     // Barras de orçamento: a largura da parte destacada é o peso publicado pelo Ipea
     const barras = [
@@ -96,7 +96,7 @@
       '</div>'
     ).join('');
     el('ancora-fonte-pesos').innerHTML = 'Fonte: ' + fonteLink(A.pesos.fonte) + '. Pesos do grupo "' + A.pesos.grupo +
-      '" (inclui comer fora de casa), da ' + A.pesos.referencia + '. A parte destacada de cada barra começa à esquerda e tem o tamanho do peso.';
+      '" (inclui comer fora de casa), da ' + A.pesos.referencia + '. A parte destacada, à esquerda de cada barra, tem o tamanho do peso.';
 
     // Meses reais, para comparar as duas faixas
     const pilulas = el('ancora-meses');
@@ -118,10 +118,10 @@
 
     const d = A.doze_meses_out26;
     el('ancora-atencao').innerHTML =
-      '<li><strong>Pesa mais para cima e para baixo.</strong> Quando a comida sobe, quem ganha menos sente mais; quando ela cai, também sente mais o alívio. ' +
-      'Por isso não é verdade que quem ganha menos sempre tem a inflação maior: em 12 meses até outubro de 2026, a renda muito baixa teve ' + porcento(d.muito_baixa_pct) +
+      '<li><strong>Pesa mais para cima e para baixo.</strong> Quem ganha menos sente mais a alta da comida, e também o alívio quando ela cai. ' +
+      'Por isso nem sempre tem a inflação maior: em 12 meses até outubro de 2026, a renda muito baixa teve ' + porcento(d.muito_baixa_pct) +
       ' e a renda alta, ' + porcento(d.alta_pct) + ' (' + fonteLink(d.fonte) + ').</li>' +
-      '<li><strong>Classes C e D.</strong> Nenhuma fonte oficial encontrada diz qual faixa do Ipea corresponde às classes C e D. Por isso esta aba fala em "renda muito baixa" e mostra o limite em reais.</li>';
+      '<li><strong>Classes C e D.</strong> Nenhuma fonte oficial encontrada liga as faixas do Ipea às classes C e D. Por isso a aba fala em "renda muito baixa", com o limite em reais.</li>';
   }
 
   function mostrarMes(m) {
@@ -198,11 +198,11 @@
     } else if (total > 0) {
       exportar = 'mais reais';
       prateleira = 'tende a subir';
-      frase = 'Vender para fora passou a render mais reais. Para não perder o café para o comprador estrangeiro, a torrefação no Brasil precisa pagar perto disso, e o preço na prateleira tende a subir. Produzir muito não protege o consumidor quando o produto pode ser exportado.';
+      frase = 'Vender para fora rende mais reais. Para não perder o café, a torrefação no Brasil precisa pagar perto disso, e o preço na prateleira tende a subir. Produzir muito não protege o consumidor quando o produto pode ser exportado.';
     } else if (total < 0) {
       exportar = 'menos reais';
       prateleira = 'tende a cair';
-      frase = 'Vender para fora passou a render menos reais. O produtor aceita vender mais barato aqui dentro, e o preço na prateleira tende a cair. O mecanismo funciona nos dois sentidos.';
+      frase = 'Vender para fora rende menos reais. O produtor aceita vender mais barato aqui, e o preço na prateleira tende a cair. O mecanismo funciona nos dois sentidos.';
     } else {
       exportar = 'o mesmo';
       prateleira = 'não muda por este motivo';
@@ -238,7 +238,7 @@
     ).join('');
     el('cafe-exportado-conta').innerHTML =
       '<strong>Conta:</strong> ' + K.exportado_calculo.formula + '. <strong>Fonte dos dados:</strong> ' + fonteLink(K.exportado_calculo.fonte) +
-      '. ' + K.exportado_calculo.nota + ' Qualquer pessoa pode refazer a conta com os números do USDA.';
+      '. ' + K.exportado_calculo.nota;
 
     const rot = s => s.map(p => mesCurto(p[0]));
     graficoLinha('graf-cafe-arabica', rot(K.serie_arabica_usd_kg), K.serie_arabica_usd_kg.map(p => p[1]),
@@ -251,7 +251,7 @@
     const ini = K.serie_arabica_usd_kg[0][0], fim = K.serie_arabica_usd_kg[K.serie_arabica_usd_kg.length - 1][0];
     el('cafe-fontes-graf').innerHTML =
       'De ' + mesLongo(ini) + ' a ' + mesLongo(fim) + '. Fontes: ' + fonteLink(K.fonte_arabica) + '; ' + fonteLink(K.fonte_dolar) +
-      '; ' + fonteLink(K.fonte_ipca) + ', item "' + K.item_ipca + '". Os três gráficos medem coisas diferentes: compare só se sobem ou descem, e em que época.';
+      '; ' + fonteLink(K.fonte_ipca) + ', item "' + K.item_ipca + '". Os gráficos medem coisas diferentes: compare só a direção e a época.';
 
     // Feijão: o contraexemplo
     const B = C.feijao;
@@ -260,10 +260,10 @@
       ' (' + fonteLink(B.fonte_exportacao) + '). Mesmo assim, o preço do feijão carioca no IPCA <strong>caiu</strong> em 12 meses em ' +
       B.ipca_carioca_12m.slice(0, 2).map(p => mesCurto(p.mes) + ' (' + porcentoComSinal(p.valor) + ')').join(' e ') +
       '. Os números da Conab ajudam a entender: na safra ' + B.conab_safra + ', a exportação de feijão foi de ' + numero(B.conab_exportacao_mil_t) +
-      ' mil toneladas, contra ' + numero(B.conab_consumo_mil_t) + ' mil toneladas consumidas no Brasil (' + fonteLink(B.fonte_conab) +
-      '). O feijão fica quase todo aqui, e boa parte do exportado nem é o feijão da cesta (leitura da equipe; a Conab não liga a exportação ao preço). ' +
+      ' mil toneladas, contra ' + numero(B.conab_consumo_mil_t) + ' mil consumidas no Brasil (' + fonteLink(B.fonte_conab) +
+      '). O feijão fica quase todo aqui (leitura da equipe; a Conab não liga a exportação ao preço). ' +
       'Em ' + mesLongo(B.ipca_carioca_12m[2].mes) + ', o carioca subia ' + porcentoComSinal(B.ipca_carioca_12m[2].valor) +
-      ' em 12 meses, por outros motivos que esta pesquisa não investigou.';
+      ' em 12 meses, por motivos que esta pesquisa não investigou.';
     el('feijao-nota').textContent = B.exportacao_nota;
   }
 
@@ -347,7 +347,7 @@
       mesLongo(R.serie_ipca_arroz_12m[0][0]) + ' a ' + mesLongo(R.serie_ipca_arroz_12m[R.serie_ipca_arroz_12m.length - 1][0]) +
       '. Fonte: ' + fonteLink(R.fonte_ipca) + '.';
     el('arroz-texto').innerHTML =
-      'A Conab escreve que a área cresceu em 2024/25 "impulsionada pelos elevados preços" e que encolheu em 2025/26 principalmente pelas condições de preço. ' +
+      'Segundo a Conab, a área cresceu em 2024/25 "impulsionada pelos elevados preços" e encolheu em 2025/26 principalmente pelo preço. ' +
       'Com a colheita grande de 2024/25, o arroz ficou <strong>' + porcento(Math.abs(R.ipca_2025_pct)) + ' mais barato</strong> em 2025 (IPCA, Brasil). ' +
       'Depois, a produção de 2025/26 caiu ' + num(Math.abs(R.producao_2025_26_pct), 1) + '% (' + fonteLink(R.fonte_producao) + ').';
 
@@ -359,7 +359,7 @@
       trimestre(Bo.femeas_pct[0][0]) + ' ao ' + trimestre(Bo.femeas_pct[Bo.femeas_pct.length - 1][0]) + '. Fonte dos dados: ' + fonteLink(Bo.femeas_calculo.fonte) + '.';
     el('boi-conta').innerHTML = '<strong>Conta:</strong> ' + Bo.femeas_calculo.formula + '. ' + Bo.femeas_calculo.nota;
     el('boi-texto').innerHTML =
-      'Quando a linha sobe, os pecuaristas estão vendendo fêmeas (mais carne agora); quando desce, estão segurando fêmeas para ter bezerros (menos carne agora). ' +
+      'Linha subindo: os pecuaristas vendem fêmeas (mais carne agora). Linha descendo: seguram fêmeas para ter bezerros (menos carne agora). ' +
       'As ondas da linha mostram o ciclo do boi (leitura da equipe, com base no mecanismo descrito pelo Banco Central), que a Embrapa estima em cerca de ' + Bo.ciclo_anos + ' (' + fonteLink(Bo.fonte_ciclo) + '). ' +
       'Em 2025, o IBGE registrou o maior número de fêmeas abatidas da série, iniciada em 1997, e elas foram ' + num(Bo.femeas_2025_ibge_pct, 1) + '% do abate total (' + fonteLink(Bo.fonte_2025) + ').';
   }
@@ -399,9 +399,9 @@
     el('bio-fonte-ipca').innerHTML = 'Variação do preço do óleo de soja em 12 meses, Brasil. Fonte: ' + fonteLink(Bd.fonte_ipca) + '.';
     el('bio-atencao').innerHTML =
       '<li><strong>O que está comprovado:</strong> a decisão de energia mudou para onde vai o óleo. A EPE liga a queda da exportação de óleo em 2024 ao maior uso no biodiesel (' + fonteLink('epe') + '). A Conab também escreve que uma mistura maior reduz o óleo disponível para exportar (Conab, Perspectivas para a Agropecuária).</li>' +
-      '<li><strong>O que não está medido:</strong> nenhuma fonte independente calcula quanto o biodiesel muda o preço do óleo no supermercado. A única que liga os dois em 2024 é um ' + fonteLink('cepea_abiove') + '. Por isso esta parte não tem simulação.</li>' +
-      '<li><strong>Os dados contrariam uma leitura simples:</strong> a maior alta da tabela foi em 2022, com a mistura no mínimo (B10), e em 2026 o preço caiu com o B15. Comparar "antes e depois" de uma norma é só correlação.</li>' +
-      '<li><strong>Elo com o café e o dólar:</strong> o grupo de trabalho do governo escreve que o óleo de soja no Brasil é precificado pelo valor internacional (' + fonteLink('gt_biodiesel') + '). O biodiesel acrescenta um comprador dentro do país a um produto que já segue o preço de fora.</li>';
+      '<li><strong>O que não está medido:</strong> nenhuma fonte independente calcula quanto o biodiesel muda o preço do óleo no supermercado. A única que liga os dois, em 2024, é um ' + fonteLink('cepea_abiove') + '. Por isso esta parte não tem simulação.</li>' +
+      '<li><strong>Os dados contrariam uma leitura simples:</strong> a maior alta da tabela foi em 2022, com a mistura no mínimo (B10), e em 2026 o preço caiu com o B15.</li>' +
+      '<li><strong>Elo com o café e o dólar:</strong> o grupo de trabalho do governo escreve que o óleo de soja no Brasil é precificado pelo valor internacional (' + fonteLink('gt_biodiesel') + '). O biodiesel acrescenta um comprador interno a um produto que já segue o preço de fora.</li>';
   }
 
   // ===================================================================

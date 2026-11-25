@@ -148,13 +148,12 @@
       <p class="selo-fonte">Números desta tela: <strong>Ipea, IBGE, Banco Central, Banco Mundial, USDA, Conab, MDIC e EPE</strong> (fonte e mês embaixo de cada gráfico)</p>
       <h1>Por que o preço da comida muda?</h1>
       <p class="intro">
-        As abas anteriores mostram <em>quanto</em> o preço mudou. Esta mostra <em>por quê</em>: quatro mecanismos econômicos
-        pouco conhecidos, explicados em instituições oficiais de pesquisa.
+        As abas anteriores mostram <em>quanto</em> o preço mudou. Esta mostra <em>por quê</em>: quatro mecanismos econômicos pouco conhecidos.
       </p>
 
       <div class="legenda-registros">
-        <p><span class="etiqueta etiqueta-sim">Simulação</span> Caixa tracejada, sem números: um modelo simplificado para entender a lógica. <strong>Não é previsão</strong> nem mede o tamanho de nenhum efeito.</p>
-        <p><span class="etiqueta etiqueta-real">Dado real</span> Gráficos e números copiados de publicações oficiais, com fonte e período.</p>
+        <p><span class="etiqueta etiqueta-sim">Simulação</span> Caixa tracejada, sem números: um modelo para entender a lógica. <strong>Não é previsão.</strong></p>
+        <p><span class="etiqueta etiqueta-real">Dado real</span> Números de publicações oficiais, com fonte e período.</p>
       </div>
 
       <nav class="indice-causas" aria-label="Partes desta aba">
@@ -168,13 +167,13 @@
       <!-- 1. ÂNCORA -->
       <article class="bloco" id="causa-ancora">
         <h2>1. A mesma alta pesa mais para quem ganha menos</h2>
-        <p>Quanto menor a renda, maior a parte do dinheiro que vai para a comida. Por isso qualquer mudança no preço dos alimentos mexe mais no orçamento das famílias de renda mais baixa. Os economistas chamam esse padrão de Lei de Engel.</p>
+        <p>Quanto menor a renda, maior a parte do dinheiro que vai para a comida (Lei de Engel). Por isso o preço dos alimentos mexe mais no orçamento das famílias de renda mais baixa.</p>
         <p id="ancora-faixas"></p>
         <p class="etiqueta etiqueta-real">Dado real</p>
         <div class="orcamentos" id="ancora-orcamentos"></div>
         <p class="fonte" id="ancora-fonte-pesos"></p>
         <h3 class="subtitulo">Nos meses em que a comida subiu ou caiu</h3>
-        <p>Escolha um mês para comparar a inflação das duas faixas:</p>
+        <p>Escolha um mês e compare as duas faixas:</p>
         <div class="pilulas" id="ancora-meses"></div>
         <div class="painel-mes" id="ancora-mes" aria-live="polite"></div>
         <h3 class="subtitulo">Mas atenção</h3>
@@ -185,19 +184,19 @@
       <article class="bloco bloco-principal" id="causa-cafe">
         <h2>2. Café: o Brasil produz muito, mas o preço segue o mundo</h2>
         <p id="cafe-escala"></p>
-        <p><strong>Câmbio</strong> é o preço do dólar em reais. Quando o dólar sobe, cada dólar recebido por uma venda ao exterior vale mais reais.</p>
+        <p><strong>Câmbio</strong> é o preço do dólar em reais. Quando o dólar sobe, vender para o exterior rende mais reais.</p>
 
         <h3 class="subtitulo">Entenda: dois compradores para a mesma saca</h3>
         <div class="simulacao">
           <p class="etiqueta etiqueta-sim">Simulação · modelo simplificado, não é previsão</p>
-          <p>O produtor pode vender a saca para uma torrefação no Brasil ou para um comprador no exterior, e vende para quem pagar mais. Mude o preço lá fora e o dólar e veja o que acontece.</p>
+          <p>O produtor vende a saca para quem pagar mais: a torrefação no Brasil ou o comprador no exterior. Mude o preço lá fora e o dólar.</p>
           <div class="sim-controles">
             <div><span class="controle-titulo">Preço do café lá fora</span><div class="pilulas" id="sim-cafe-fora"></div></div>
             <div><span class="controle-titulo">Dólar</span><div class="pilulas" id="sim-cafe-dolar"></div></div>
           </div>
           <div class="cadeia" id="sim-cafe-cadeia"></div>
           <p class="sim-frase" id="sim-cafe-frase" aria-live="polite"></p>
-          <p class="fonte">O modelo ignora frete, qualidade, estoques e clima. O mecanismo é descrito pelo Ipea e pelo Banco Central (fontes abaixo).</p>
+          <p class="fonte">O modelo ignora frete, qualidade, estoques e clima. Mecanismo descrito pelo Ipea e pelo Banco Central.</p>
         </div>
 
         <h3 class="subtitulo">Quanto do café brasileiro vai para fora</h3>
@@ -214,28 +213,28 @@
         </div>
         <p class="fonte" id="cafe-fontes-graf"></p>
         <div class="citacoes">
-          <p><strong>Ipea:</strong> com a alta internacional das proteínas animais e do café e a desvalorização do real, exportar ficou mais lucrativo e uma parte maior da produção foi para fora, o que pressionou os preços aqui (Carta de Conjuntura nº 66, 2025). Segundo o Ipea, a alta das carnes também veio do aumento das exportações, não da falta de produção.</p>
-          <p><strong>Banco Central:</strong> o outro sentido também acontece. A valorização do real e a queda das commodities ajudaram a desacelerar os preços da alimentação no domicílio em 2025 (Relatório de Política Monetária, dez/2025). O BC estima que o câmbio passa para os preços mais na comida em casa do que nos serviços (mar/2026).</p>
+          <p><strong>Ipea:</strong> com a alta internacional do café e das carnes e a desvalorização do real, exportar ficou mais lucrativo, mais produção foi para fora e os preços subiram aqui (Carta de Conjuntura nº 66, 2025). Nas carnes, a alta veio da exportação, não da falta de produção.</p>
+          <p><strong>Banco Central:</strong> vale também no outro sentido. Em 2025, a valorização do real e a queda das commodities ajudaram a frear os preços da comida em casa (Relatório de Política Monetária, dez/2025). O câmbio passa mais para a comida do que para os serviços (mar/2026).</p>
         </div>
 
         <h3 class="subtitulo">Mas atenção</h3>
         <ul class="atencao">
-          <li><strong>Não foi só o dólar.</strong> Em 2024 houve quebra da safra de café no Vietnã, e no fim de 2025 os estoques estavam baixos e havia risco de seca (Ipea e Banco Central). Em 2026, a expectativa de uma boa safra no Brasil ajudou a derrubar o preço (Cepea e Conab). Nenhuma fonte separa quanto da alta veio do câmbio e quanto veio da oferta mundial.</li>
-          <li><strong>O supermercado demora.</strong> Em São Paulo, o preço do café em pó no varejo (DIEESE) chegou ao máximo meses depois do preço internacional e caiu menos (leitura da equipe). Esta pesquisa não encontrou estudo oficial que explique essa demora.</li>
+          <li><strong>Não foi só o dólar.</strong> Houve quebra de safra no Vietnã em 2024 e estoques baixos com risco de seca no fim de 2025 (Ipea e Banco Central). Em 2026, a expectativa de boa safra no Brasil ajudou a derrubar o preço (Cepea e Conab). Nenhuma fonte separa o efeito do câmbio do efeito da oferta mundial.</li>
+          <li><strong>O supermercado demora.</strong> Em São Paulo, o café em pó (DIEESE) chegou ao máximo meses depois do preço internacional e caiu menos (leitura da equipe). Não encontramos estudo oficial que explique essa demora.</li>
         </ul>
 
         <div class="contraexemplo">
           <h3>Contraexemplo: o feijão</h3>
           <p id="feijao-texto"></p>
           <p class="fonte" id="feijao-nota"></p>
-          <p><strong>Conclusão:</strong> o mecanismo é forte nos alimentos de que o Brasil exporta uma parte grande da produção, como café e carne, e fraco nos que ficam quase todos aqui.</p>
+          <p><strong>Conclusão:</strong> o mecanismo é forte no que o Brasil exporta em grande parte, como café e carne, e fraco no que fica quase todo aqui.</p>
         </div>
       </article>
 
       <!-- 3. CICLOS -->
       <article class="bloco" id="causa-ciclos">
         <h2>3. Arroz × boi: a mesma notícia, reações opostas</h2>
-        <p>Nos dois casos, o preço sobe. O produtor de arroz decide <strong>quanto plantar</strong>; o pecuarista decide <strong>o que fazer com a vaca</strong>. Por isso a oferta de arroz aumenta na safra seguinte, e a oferta de carne diminui primeiro.</p>
+        <p>O preço sobe. O produtor de arroz decide <strong>quanto plantar</strong>; o pecuarista, <strong>o que fazer com a vaca</strong>. Por isso a oferta de arroz aumenta na safra seguinte, e a de carne diminui primeiro.</p>
 
         <div class="simulacao">
           <p class="etiqueta etiqueta-sim">Simulação · modelo simplificado, não é previsão</p>
@@ -249,7 +248,7 @@
             <div><h3>Arroz: uma safra por vez</h3><ol class="passos" id="ciclo-arroz"></ol></div>
             <div><h3>Boi: um ciclo de anos</h3><ol class="passos" id="ciclo-boi"></ol></div>
           </div>
-          <p class="fonte">Mecanismos descritos pela Conab (arroz) e pelo Banco Central e pela Embrapa (boi). O modelo ignora clima, custos e crédito.</p>
+          <p class="fonte">O modelo ignora clima, custos e crédito. Mecanismos descritos pela Conab (arroz) e pelo Banco Central e pela Embrapa (boi).</p>
         </div>
 
         <h3 class="subtitulo">O que aconteceu de verdade: arroz</h3>
@@ -269,17 +268,17 @@
 
         <h3 class="subtitulo">Mas atenção</h3>
         <ul class="atencao">
-          <li><strong>A enchente não começou a alta do arroz.</strong> O preço já subia no fim de 2023, com pouca oferta no Brasil e chuvas na Ásia (Banco Central). A enchente de 2024 atingiu uma área pequena, porque a maior parte do arroz gaúcho já tinha sido colhida (Conab).</li>
-          <li><strong>O ciclo do arroz ainda não fechou.</strong> Para a safra 2026/27, a Conab estima uma área ainda menor, por clima, custos e preço. É estimativa, e a etapa "preço recuperou, área cresce" ainda não apareceu nos dados.</li>
-          <li><strong>A virada do boi ainda é preliminar.</strong> No 2º trimestre de 2026, o abate de fêmeas caiu 1,9% e o de vacas, 5,0%, sobre um ano antes (IBGE, dado preliminar): é o primeiro sinal de que os pecuaristas começaram a segurar fêmeas. A Conab escreve que a virada está "mais gradual" do que se esperava.</li>
-          <li><strong>Os ciclos se encontram com a exportação.</strong> Em 2025, o abate de bovinos foi recorde, e o IBGE atribui isso ao recorde da exportação de carne, o mesmo mecanismo do café.</li>
+          <li><strong>A enchente não começou a alta do arroz.</strong> O preço já subia no fim de 2023, com pouca oferta no Brasil e chuvas na Ásia (Banco Central). Na enchente de 2024, a maior parte do arroz gaúcho já estava colhida (Conab).</li>
+          <li><strong>O ciclo do arroz ainda não fechou.</strong> Para 2026/27, a Conab estima uma área ainda menor. A etapa "preço recuperou, área cresce" ainda não apareceu nos dados.</li>
+          <li><strong>A virada do boi ainda é preliminar.</strong> No 2º trimestre de 2026, o abate de fêmeas caiu 1,9% e o de vacas, 5,0%, sobre um ano antes (IBGE, dado preliminar): primeiro sinal de que os pecuaristas começaram a segurar fêmeas. Para a Conab, a virada está "mais gradual" que o esperado.</li>
+          <li><strong>Elo com a exportação.</strong> O abate de bovinos foi recorde em 2025, e o IBGE atribui isso ao recorde da exportação de carne: o mesmo mecanismo do café.</li>
         </ul>
       </article>
 
       <!-- 4. BIODIESEL -->
       <article class="bloco" id="causa-biodiesel">
         <h2>4. Biodiesel: uma decisão de energia que mudou o destino do óleo de soja</h2>
-        <p>O diesel vendido no Brasil é obrigado por lei a ter uma parte de <strong>biodiesel</strong>, combustível feito principalmente de óleo de soja. Essa parte é decidida pelo governo (Conselho Nacional de Política Energética, CNPE). Este é um caso complementar: o efeito sobre a <em>quantidade</em> de óleo está comprovado; o efeito sobre o <em>preço</em> no supermercado, não.</p>
+        <p>Por lei, o diesel vendido no Brasil leva uma parte de <strong>biodiesel</strong>, feito principalmente de óleo de soja. O governo (CNPE) decide o tamanho dessa parte. O efeito sobre a <em>quantidade</em> de óleo está comprovado; o efeito sobre o <em>preço</em> no supermercado, não.</p>
         <p class="etiqueta etiqueta-real">Dado real</p>
         <h3 class="subtitulo">A mistura obrigatória ao longo do tempo</h3>
         <ol class="linha-tempo" id="bio-linha"></ol>
@@ -298,13 +297,13 @@
 
         <h3 class="subtitulo">Mas atenção</h3>
         <ul class="atencao" id="bio-atencao"></ul>
-        <p class="nota-curta">A cana também pode virar açúcar ou etanol, mas os dados de 2023 a 2026 não mostram o etanol encarecendo o açúcar. Por isso esse caso ficou fora desta aba.</p>
+        <p class="nota-curta">A cana também pode virar açúcar ou etanol, mas os dados de 2023 a 2026 não mostram o etanol encarecendo o açúcar. Por isso esse caso ficou de fora.</p>
       </article>
 
       <!-- FONTES -->
       <article class="bloco" id="causa-fontes">
         <h2>Fontes desta aba</h2>
-        <p>Cada afirmação desta aba foi conferida em documentos oficiais. Todos os números vêm do arquivo de dados do app; os marcados como "Cálculo da equipe" têm a conta ao lado.</p>
+        <p>Cada afirmação foi conferida em documentos oficiais. Os números marcados como "Cálculo da equipe" têm a conta ao lado.</p>
         <ul class="lista-fontes" id="causas-fontes"></ul>
       </article>
     </section>
